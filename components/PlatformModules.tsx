@@ -66,32 +66,32 @@ const PlatformModules: React.FC = () => {
               </div>
             </div>
 
-            {/* 右侧/下载区：维持极简美学 */}
-            <div className="lg:w-[340px] w-full bg-white/95 backdrop-blur-2xl p-10 rounded-[56px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] flex flex-col items-center transform transition-all hover:scale-[1.02] duration-700 border border-white/60">
-              <div className="text-center mb-10">
-                <h4 className="text-[#1A1C2E] font-bold text-2xl mb-3 tracking-tight">立即使用产品</h4>
-                <div className="w-14 h-[4px] bg-[#E60012] mx-auto rounded-full"></div>
+            {/* 右侧/下载区：深色玻璃态风格，融入整体氛围 */}
+            <div className="lg:w-[320px] w-full bg-black/30 backdrop-blur-md p-6 rounded-[32px] border border-white/10 flex flex-col items-center h-full max-h-[600px] lg:max-h-[700px] justify-between">
+              <div className="text-center mb-4">
+                <h4 className="text-white font-bold text-xl mb-1 tracking-wide">产品下载</h4>
+                <p className="text-gray-400 text-xs tracking-widest uppercase">随时随地 掌控运力</p>
               </div>
               
-              <div className="space-y-5 w-full">
+              <div className="space-y-3 w-full overflow-y-auto custom-scrollbar px-2 flex-grow flex flex-col justify-center">
                 {platform.downloads.map((dl) => (
                   <div 
                     key={dl.name} 
-                    className="flex items-center bg-[#F8FAFC] rounded-[28px] p-4 border border-transparent hover:bg-white hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/40 transition-all duration-500 group/qr"
+                    className="flex flex-col items-center bg-white/5 rounded-xl p-4 border border-white/5 hover:bg-white/10 transition-all duration-300 group/qr shrink-0"
                   >
-                    <div className="bg-white p-2 rounded-xl shadow-md mr-5 group-hover/qr:scale-105 transition-all duration-300">
-                      <img src={dl.qrUrl} alt={dl.name} className="w-16 h-16 mix-blend-multiply" />
+                    <div className="bg-white p-1.5 rounded-lg shadow-inner mb-2 group-hover/qr:scale-105 transition-all duration-300">
+                      <img src={dl.qrUrl} alt={dl.name} className="w-24 h-24" />
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[15px] font-bold text-gray-800 tracking-wide mb-1">{dl.name}</span>
-                      <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">扫描二维码下载</span>
+                    <div className="flex flex-col items-center">
+                      <span className="text-sm font-bold text-gray-100 tracking-wide mb-0.5">{dl.name}</span>
+                      <span className="text-[10px] text-gray-500 font-medium">扫码一键下载</span>
                     </div>
                   </div>
                 ))}
               </div>
               
-              <div className="mt-10 pt-8 border-t border-gray-100 w-full text-center">
-                <p className="text-[11px] text-gray-400 font-black uppercase tracking-[0.4em] opacity-50">
+              <div className="mt-4 pt-4 border-t border-white/5 w-full text-center">
+                <p className="text-[9px] text-gray-500 font-bold uppercase tracking-[0.2em] opacity-60">
                   Secure & Professional
                 </p>
               </div>

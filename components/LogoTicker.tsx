@@ -63,7 +63,8 @@ const LogoGroup: React.FC<LogoGroupProps> = ({ title, items, showControls = fals
                 className="max-h-full max-w-full object-contain mix-blend-multiply" 
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = `https://via.placeholder.com/200x80/FFFFFF/333333?text=${encodeURIComponent(item.name)}`;
+                  target.style.display = 'none';
+                  target.parentElement!.innerHTML = `<div class="text-sm font-bold text-gray-500 text-center leading-tight">${item.name}</div>`;
                 }}
               />
             </div>

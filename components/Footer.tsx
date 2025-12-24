@@ -1,10 +1,10 @@
 
 import React from 'react';
 
-// 使用用户提供的原图作为 Logo
+// 使用本地 logo.png
 const LogoIcon = () => (
   <img 
-    src="https://files.oaiusercontent.com/file-K1k12v3S5qN5p11L5N1u1J" 
+    src="/logo.png" 
     alt="万联通 Logo" 
     className="w-10 h-10 object-contain"
   />
@@ -85,10 +85,9 @@ const Footer: React.FC = () => {
               <LogoIcon />
               <div className="text-left">
                 <div className="text-white text-3xl font-black tracking-tighter leading-none flex items-center">
-                  万联通
-                  <span className="ml-1 w-2 h-2 bg-[#E60012] rounded-full"></span>
+                  万连通
                 </div>
-                <div className="text-[10px] text-gray-500 tracking-widest mt-1 font-bold">万物易达旗下在线服务平台</div>
+                <div className="text-[10px] text-gray-500 tracking-wide mt-1 font-medium">万联易达集团旗下物流服务平台</div>
               </div>
             </div>
             

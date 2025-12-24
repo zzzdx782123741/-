@@ -8,10 +8,10 @@ interface HeaderProps {
   onNavigate: (path: 'home' | 'aftersales') => void;
 }
 
-// 使用用户提供的原图作为 Logo
+// 使用本地 logo.png
 const LogoIcon = () => (
   <img 
-    src="https://files.oaiusercontent.com/file-K1k12v3S5qN5p11L5N1u1J" 
+    src="/logo.png" 
     alt="万联通 Logo" 
     className="w-9 h-9 object-contain"
   />
@@ -43,11 +43,10 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
                 <LogoIcon />
              </div>
              <div className="flex flex-col text-left">
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-black tracking-tighter text-gray-900 leading-none">万联通</span>
-                  <div className="ml-1 w-1.5 h-1.5 bg-[#E60012] rounded-full"></div>
+                <div className="flex items-center">
+                  <span className="text-3xl font-black tracking-tighter text-gray-900 leading-none">万连通</span>
                 </div>
-                <span className="text-[10px] text-gray-400 font-bold tracking-widest mt-1 uppercase">Digital Logistics</span>
+                <span className="text-[10px] text-gray-500 font-medium tracking-wide mt-1">万联易达集团旗下物流服务平台</span>
              </div>
           </button>
 

@@ -3,15 +3,17 @@ import React from 'react';
 
 const StatsSection: React.FC = () => {
   const leftStats = [
-    { label: '注册司机', value: '882,806', color: '#EF4444', isRed: true },
-    { label: '企业会员', value: '5,782', color: '#3B82F6', isRed: false },
-    { label: '承运总量(万吨)', value: '24,650', color: '#8B5CF6', isRed: false },
+    { label: '注册司机', value: '900940', color: '#EF4444', isRed: false },
+    { label: '企业会员', value: '6093', color: '#EF4444', isRed: false },
+    { label: '服务区县', value: '2877', color: '#EF4444', isRed: false },
+    { label: '承运总量(万吨)', value: '26716', color: '#EF4444', isRed: false },
   ];
 
   const rightStats = [
-    { label: '认证车辆', value: '975,640', color: '#EF4444', isRed: true },
-    { label: '运输线路', value: '56,851', color: '#F59E0B', isRed: false },
-    { label: '分支机构', value: '100+', color: '#10B981', isRed: false },
+    { label: '认证车辆', value: '998310', color: '#EF4444', isRed: false },
+    { label: '运输线路', value: '59962', color: '#EF4444', isRed: false },
+    { label: '分支机构', value: '100+', color: '#EF4444', isRed: false },
+    { label: '覆盖省级', value: '30', color: '#EF4444', isRed: false },
   ];
 
   // 严格参照截图中的红点点位
@@ -29,41 +31,37 @@ const StatsSection: React.FC = () => {
       <div className="max-w-7xl w-full px-4">
         {/* 标题部分 */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">业务规模</h2>
-          <p className="text-gray-500 text-sm tracking-wide">覆盖全国30+省级行政区，连接百万司机</p>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
+            <span className="text-[#E60012] mr-2 text-xl font-bold">/ /</span>
+            业务规模
+            <span className="text-[#E60012] ml-2 text-xl font-bold">/ /</span>
+          </h2>
+          {/* <p className="text-gray-500 text-sm tracking-wide">覆盖全国30+省级行政区，连接百万司机</p> */}
         </div>
 
         {/* 主卡片容器 - 还原截图大圆角白底样式 */}
         <div className="bg-white rounded-[40px] shadow-[0_15px_60px_rgba(0,0,0,0.04)] border border-gray-100 p-12 lg:p-20 relative overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
             
-            {/* 左侧卡片组 - 彩条在左 */}
-            <div className="flex flex-col gap-6 w-full lg:w-72">
+            {/* 左侧卡片组 - 整合为一个垂直卡片 */}
+            <div className="w-full lg:w-64 bg-white border border-[#E60012]/30 shadow-sm p-8 flex flex-col justify-between h-[480px]">
               {leftStats.map((stat, idx) => (
-                <div 
-                  key={idx} 
-                  className="bg-white rounded-xl shadow-[0_4px_25px_rgba(0,0,0,0.05)] p-8 relative overflow-hidden flex flex-col items-start transition-all hover:shadow-xl hover:-translate-y-1"
-                >
-                  <div 
-                    className="absolute left-0 top-0 bottom-0 w-1.5" 
-                    style={{ backgroundColor: stat.color }}
-                  ></div>
-                  <div className={`text-3xl font-bold mb-2 ${stat.isRed ? 'text-[#E60012]' : 'text-gray-800'}`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+                <div key={idx} className="flex flex-col items-center border-b border-gray-100 last:border-0 pb-6 last:pb-0 pt-6 first:pt-0 flex-1 justify-center">
+                  <div className="text-3xl font-bold text-[#1e3a8a] mb-2">{stat.value}</div>
+                  <div className="text-gray-500 text-sm font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
 
             {/* 中间地图区域 */}
             <div className="flex-1 relative flex flex-col items-center justify-center">
-              <div className="relative w-full max-w-[550px] aspect-[1.1/1]">
-                {/* 专业的中国地图底图，带省份轮廓 */}
+              <div className="relative w-full max-w-[650px] aspect-[1.2/1]">
+                {/* 专业的中国地图底图 - 使用 Wikimedia Commons 源 + 防盗链规避 */}
                 <img 
-                  src="https://www.wanliantong.com/_next/image?url=%2Fimages%2Fhome%2Fmap.png&w=1200&q=75" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/52/China_blank_province_map.svg" 
                   alt="China Map" 
-                  className="w-full h-full object-contain opacity-40 grayscale contrast-125"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-contain opacity-20 grayscale contrast-125"
                 />
                 
                 {/* 业务红点 */}
@@ -71,36 +69,22 @@ const StatsSection: React.FC = () => {
                   {mapDots.map((dot, i) => (
                     <div 
                       key={i} 
-                      className="absolute w-3 h-3 bg-[#E60012] rounded-full border-2 border-white shadow-lg"
+                      className="absolute w-2 h-2 bg-[#E60012] rounded-full"
                       style={{ top: dot.top, left: dot.left }}
                     >
-                      <div className="absolute inset-0 bg-[#E60012] rounded-full animate-ping opacity-40"></div>
                     </div>
                   ))}
                 </div>
               </div>
               
-              {/* 地图底部水印字样 */}
-              <div className="mt-6 text-[11px] text-gray-300 font-medium tracking-[0.3em] uppercase opacity-60">
-                Normal safe city
-              </div>
             </div>
 
-            {/* 右侧卡片组 - 彩条在右 */}
-            <div className="flex flex-col gap-6 w-full lg:w-72">
+            {/* 右侧卡片组 - 整合为一个垂直卡片 */}
+            <div className="w-full lg:w-64 bg-white border border-[#E60012]/30 shadow-sm p-8 flex flex-col justify-between h-[480px]">
               {rightStats.map((stat, idx) => (
-                <div 
-                  key={idx} 
-                  className="bg-white rounded-xl shadow-[0_4px_25px_rgba(0,0,0,0.05)] p-8 relative overflow-hidden flex flex-col items-end transition-all hover:shadow-xl hover:-translate-y-1"
-                >
-                  <div 
-                    className="absolute right-0 top-0 bottom-0 w-1.5" 
-                    style={{ backgroundColor: stat.color }}
-                  ></div>
-                  <div className={`text-3xl font-bold mb-2 ${stat.isRed ? 'text-[#E60012]' : 'text-gray-800'}`}>
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 text-sm font-medium">{stat.label}</div>
+                <div key={idx} className="flex flex-col items-center border-b border-gray-100 last:border-0 pb-6 last:pb-0 pt-6 first:pt-0 flex-1 justify-center">
+                  <div className="text-3xl font-bold text-[#1e3a8a] mb-2">{stat.value}</div>
+                  <div className="text-gray-500 text-sm font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
