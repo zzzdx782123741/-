@@ -102,23 +102,22 @@ const PlatformModules: React.FC = () => {
                     key={cap.label} 
                     className="relative group/cap flex flex-col items-center justify-start flex-1 cursor-default mx-1 first:ml-0 last:mr-0"
                   >
-                    {/* 卡片容器 - 默认状态 */}
-                    <div className="w-full flex flex-col items-center justify-center py-8 px-4 bg-white/10 backdrop-blur-xl rounded-[20px] border border-white/20 hover:bg-white/20 transition-all duration-300 h-[160px] relative z-20">
-                        {/* 图标容器 */}
-                        <div className="w-16 h-16 bg-white rounded-[16px] flex items-center justify-center mb-6 shadow-lg transition-all duration-300 group-hover/cap:-translate-y-1 z-10">
-                          <div className="text-[#E60012] w-8 h-8 transform scale-125">
+                    <div className="flex flex-col items-center justify-center relative z-20 w-full">
+                        {/* 图标容器 - 仿照车后价值样式 */}
+                        <div className="w-28 h-28 lg:w-32 lg:h-32 bg-white rounded-[24px] flex items-center justify-center shadow-2xl transition-all duration-300 group-hover/cap:bg-[#E60012] group-hover/cap:scale-110 mb-6">
+                          <div className="text-[#E60012] group-hover/cap:text-white transition-colors duration-300 transform scale-[2]">
                             {cap.icon}
                           </div>
                         </div>
                         
                         {/* 标题 */}
-                        <span className="text-lg font-bold tracking-widest text-white drop-shadow-md text-center whitespace-nowrap z-10">
+                        <span className="text-xl font-bold tracking-widest text-white drop-shadow-md text-center whitespace-nowrap z-10 group-hover/cap:text-[#E60012] transition-colors duration-300">
                           {cap.label}
                         </span>
                     </div>
                     
-                    {/* 全宽描述框 - 调整后：去掉红框，字体加大 */}
-                    <div className="absolute top-[170px] left-0 w-[400%] -left-[0%] group-first/cap:left-0 group-last/cap:-left-[300%] group-[&:nth-child(2)]/cap:-left-[100%] group-[&:nth-child(3)]/cap:-left-[200%] h-auto min-h-[60px] bg-black/60 backdrop-blur-md rounded-[16px] flex items-center px-8 py-4 opacity-0 group-hover/cap:opacity-100 transition-all duration-300 z-30 pointer-events-none shadow-2xl shadow-black/50">
+                    {/* 全宽描述框 */}
+                    <div className="absolute top-[180px] left-0 w-[400%] -left-[0%] group-first/cap:left-0 group-last/cap:-left-[300%] group-[&:nth-child(2)]/cap:-left-[100%] group-[&:nth-child(3)]/cap:-left-[200%] h-auto min-h-[60px] bg-black/60 backdrop-blur-md rounded-[16px] flex items-center px-8 py-4 opacity-0 group-hover/cap:opacity-100 transition-all duration-300 z-30 pointer-events-none shadow-2xl shadow-black/50 border border-white/10">
                         <div className="w-1.5 h-10 bg-[#E60012] rounded-full mr-6 shrink-0"></div>
                         <p className="text-xl md:text-2xl text-white font-bold leading-relaxed tracking-wide">
                             {cap.description}
@@ -132,33 +131,33 @@ const PlatformModules: React.FC = () => {
             {/* 右侧/下载区 */}
             {platform.downloads && (
               <div 
-                className="hidden lg:flex lg:w-[360px] 2xl:w-[400px] w-full bg-black/30 backdrop-blur-md p-8 lg:p-10 rounded-[40px] border border-white/10 flex-col items-center h-auto max-h-[80vh] justify-center cursor-default shrink-0"
+                className="hidden lg:flex lg:w-[320px] 2xl:w-[360px] w-full bg-black/30 backdrop-blur-md p-6 lg:p-8 rounded-[32px] border border-white/10 flex-col items-center h-auto justify-center cursor-default shrink-0"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="text-center mb-8">
-                  <h4 className="text-white font-bold text-2xl mb-2 tracking-wide">产品下载</h4>
-                  <p className="text-gray-400 text-sm tracking-[0.2em] uppercase">随时随地 掌控运力</p>
+                <div className="text-center mb-6">
+                  <h4 className="text-white font-bold text-xl lg:text-2xl mb-2 tracking-wide">产品下载</h4>
+                  <p className="text-gray-400 text-xs lg:text-sm tracking-[0.2em] uppercase">随时随地 掌控运力</p>
                 </div>
                 
-                <div className="space-y-6 w-full overflow-y-auto custom-scrollbar px-2 flex-grow flex flex-col justify-center">
+                <div className="space-y-4 w-full px-2 flex-grow flex flex-col justify-center">
                   {platform.downloads.map((dl) => (
                     <div 
                       key={dl.name} 
-                      className="flex flex-col items-center bg-white/5 rounded-2xl p-4 border border-white/5 hover:bg-white/10 transition-all duration-300 group/qr shrink-0 cursor-zoom-in"
+                      className="flex flex-col items-center bg-white/5 rounded-xl p-3 border border-white/5 hover:bg-white/10 transition-all duration-300 group/qr shrink-0 cursor-zoom-in"
                       onClick={() => setPreviewItem({ url: dl.qrUrl, name: dl.name })}
                     >
-                      <div className="bg-white p-2 rounded-xl shadow-inner mb-3 group-hover/qr:scale-105 transition-all duration-300">
-                        <img src={dl.qrUrl} alt={dl.name} className="w-24 h-24 lg:w-28 lg:h-28" />
+                      <div className="bg-white p-2 rounded-lg shadow-inner mb-2 group-hover/qr:scale-105 transition-all duration-300">
+                        <img src={dl.qrUrl} alt={dl.name} className="w-20 h-20 lg:w-24 lg:h-24" />
                       </div>
                       <div className="flex flex-col items-center">
-                        <span className="text-base font-bold text-gray-100 tracking-wide mb-1">{dl.name}</span>
-                        <span className="text-xs text-gray-500 font-medium">扫码一键下载</span>
+                        <span className="text-sm lg:text-base font-bold text-gray-100 tracking-wide mb-0.5">{dl.name}</span>
+                        <span className="text-[10px] lg:text-xs text-gray-500 font-medium">扫码一键下载</span>
                       </div>
                     </div>
                   ))}
                 </div>
                 
-                <div className="mt-8 pt-6 border-t border-white/5 w-full text-center">
+                <div className="mt-6 pt-4 border-t border-white/5 w-full text-center">
                   <p className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.3em] opacity-60">
                     Secure & Professional
                   </p>

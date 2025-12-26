@@ -1,11 +1,15 @@
 
 import React, { useState } from 'react';
 import { 
-  ShieldCheck, 
+  ArrowRight,
+  Clock,
+  ShieldCheck,
   Settings2, 
   RefreshCcw, 
   BarChart4, 
-  Store, 
+  BarChart3,
+  MapPin,
+  Store,
   Truck, 
   UserSquare2, 
   CheckCircle2, 
@@ -19,11 +23,35 @@ const AfterSales: React.FC = () => {
   const [activeRole, setActiveRole] = useState<'brand' | 'shop' | 'driver'>('brand');
   const [formRole, setFormRole] = useState<'supplier' | 'store'>('supplier');
   const [submitted, setSubmitted] = useState(false);
+  const [hoveredValue, setHoveredValue] = useState<number | null>(null);
 
   const roles = [
     { id: 'brand', label: '品牌商/经销商', icon: <Store className="w-5 h-5" /> },
     { id: 'shop', label: '维修门店', icon: <Settings2 className="w-5 h-5" /> },
     { id: 'driver', label: '司机与中小车队', icon: <Truck className="w-5 h-5" /> },
+  ];
+
+  const valueItems = [
+    { 
+      title: '正品溯源', 
+      desc: '平台直连大牌厂商，全链条溯源，确保每一件配件均为原厂正品。', 
+      icon: <ShieldCheck className="w-16 h-16" />
+    },
+    { 
+      title: '价格透明', 
+      desc: '全国统一结算价，告别线下维修“看人下菜”的行业乱象。', 
+      icon: <BarChart4 className="w-16 h-16" />
+    },
+    { 
+      title: '数字监管', 
+      desc: '维修过程线上可视化，服务工单实时归档，质量可追溯。', 
+      icon: <RefreshCcw className="w-16 h-16" />
+    },
+    { 
+      title: '极速响应', 
+      desc: '依托全国网点布局，为长途货运提供紧急救援及快速维保服务。', 
+      icon: <Settings2 className="w-16 h-16" />
+    },
   ];
 
   const roleSolutions = {
@@ -56,9 +84,9 @@ const AfterSales: React.FC = () => {
       <section className="relative h-[600px] bg-[#1A1C2E] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=2000" 
             className="w-full h-full object-cover opacity-30 scale-105 mix-blend-overlay" 
-            alt="Car mechanic workshop"
+            alt="Logistics Truck"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#1E293B]/80 to-[#1E3A8A]/40"></div>
         </div>
@@ -119,100 +147,133 @@ const AfterSales: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { 
-                title: '正品溯源', 
-                desc: '平台直连大牌厂商，全链条溯源，确保每一件配件均为原厂正品。', 
-                icon: <ShieldCheck className="w-16 h-16" />
-              },
-              { 
-                title: '价格透明', 
-                desc: '全国统一结算价，告别线下维修“看人下菜”的行业乱象。', 
-                icon: <BarChart4 className="w-16 h-16" />
-              },
-              { 
-                title: '数字监管', 
-                desc: '维修过程线上可视化，服务工单实时归档，质量可追溯。', 
-                icon: <RefreshCcw className="w-16 h-16" />
-              },
-              { 
-                title: '极速响应', 
-                desc: '依托全国网点布局，为长途货运提供紧急救援及快速维保服务。', 
-                icon: <Settings2 className="w-16 h-16" />
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="group flex flex-col items-center relative z-20">
+            {valueItems.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="group flex flex-col items-center relative z-20"
+                onMouseEnter={() => setHoveredValue(idx)}
+                onMouseLeave={() => setHoveredValue(null)}
+              >
                  {/* Square Icon Container */}
-                 <div className="w-36 h-36 bg-white rounded-3xl flex items-center justify-center text-[#E60012] shadow-2xl border border-gray-100 group-hover:scale-110 transition-transform duration-300 z-20 relative bg-white">
+                 <div className={`w-36 h-36 rounded-3xl flex items-center justify-center shadow-2xl border border-gray-100 transition-all duration-300 z-20 relative ${hoveredValue === idx ? 'bg-[#E60012] text-white scale-110' : 'bg-white text-[#E60012]'}`}>
                    {item.icon}
                  </div>
                  
                  {/* Title */}
-                 <h4 className="text-2xl font-black mt-8 mb-4 text-gray-900 group-hover:text-[#E60012] transition-colors relative z-20">{item.title}</h4>
-
-                  {/* Description Box - Modified to match Logistics Page style: Full width overlay below icons */}
-                  <div className="mt-4 w-[280px] md:w-[320px] bg-black/60 backdrop-blur-md p-6 rounded-2xl flex items-center px-6 py-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 absolute top-[85%] left-1/2 -translate-x-1/2 z-50 shadow-2xl shadow-black/50 pointer-events-none">
-                      <div className="w-1.5 h-full min-h-[40px] bg-[#E60012] rounded-full mr-4 shrink-0"></div>
-                      <p className="font-bold text-lg leading-relaxed text-white text-left">{item.desc}</p>
-                  </div>
+                 <h4 className={`text-2xl font-black mt-8 mb-4 transition-colors relative z-20 ${hoveredValue === idx ? 'text-[#E60012]' : 'text-gray-900'}`}>{item.title}</h4>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* 2.1 Business Scale & Partners Module - Separate Section */}
-      <section className="py-24 bg-gray-50 relative">
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="py-16 bg-white rounded-[32px] border border-red-100 overflow-hidden relative">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#E60012 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-              
-              <div className="max-w-7xl mx-auto px-8 relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-                  {/* Left: Impact Numbers - Customized for AfterSales */}
-                  <div className="flex-1 text-center md:text-left">
-                    <div className="inline-flex items-center space-x-2 bg-red-100 text-[#E60012] px-3 py-1 rounded-full text-sm font-bold mb-4 animate-bounce">
-                      <span className="w-2 h-2 bg-[#E60012] rounded-full"></span>
-                      <span>万联驿站 · 实力见证</span>
-                    </div>
-                    <div className="flex flex-col gap-6">
-                       <div>
-                          <div className="flex items-baseline justify-center md:justify-start">
-                             <h2 className="text-5xl md:text-6xl font-black text-[#E60012] mb-0 mx-2 drop-shadow-sm">750+</h2>
-                             <span className="text-2xl font-bold text-gray-900">覆盖县域</span>
-                          </div>
-                          <p className="text-gray-500 mt-2 font-medium">服务网络遍布全国核心物流节点</p>
-                       </div>
-                       <div className="w-full h-px bg-red-200/50"></div>
-                       <div>
-                          <div className="flex items-baseline justify-center md:justify-start">
-                             <h2 className="text-5xl md:text-6xl font-black text-[#E60012] mb-0 mx-2 drop-shadow-sm">2000+</h2>
-                             <span className="text-2xl font-bold text-gray-900">联营网点</span>
-                          </div>
-                          <p className="text-gray-500 mt-2 font-medium">标准化认证门店，服务质量有保障</p>
-                       </div>
-                    </div>
-                  </div>
-
-                  {/* Right: Partner Logos - Auto Brands & Parts */}
-                  <div className="flex-1 w-full">
-                    <div className="grid grid-cols-3 gap-4">
-                      {['Mobil 美孚', 'Shell 壳牌', 'Michelin 米其林', 'Bridgestone', 'Bosch 博世', 'Cummins 康明斯'].map((logo, i) => (
-                        <div key={i} className="bg-white h-24 rounded-xl shadow-sm border border-red-50 flex items-center justify-center group hover:shadow-md hover:scale-105 transition-all duration-300 p-4 text-center">
-                          <span className="font-bold text-gray-500 group-hover:text-[#E60012] transition-colors text-sm md:text-base">{logo}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+          {/* Fixed Description Area */}
+          <div className="mt-8 w-full h-auto min-h-[6rem] relative flex items-center justify-center">
+             {hoveredValue !== null ? (
+                <div className="w-full bg-black/80 backdrop-blur-md p-6 rounded-2xl flex items-center px-8 animate-in fade-in slide-in-from-bottom-4 duration-300 shadow-2xl shadow-black/30">
+                    <div className="w-1.5 h-10 bg-[#E60012] rounded-full mr-6 shrink-0"></div>
+                    <p className="font-bold text-xl leading-relaxed text-white text-left">{valueItems[hoveredValue].desc}</p>
                 </div>
-              </div>
+             ) : (
+                <div className="w-full h-full border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center text-gray-400 font-medium opacity-50 p-6">
+                   请移动鼠标查看详情
+                </div>
+             )}
           </div>
         </div>
       </section>
 
+      {/* 2.1 Strength Display Module - Full Width E-commerce Style */}
+      <section className="bg-gray-900 relative overflow-hidden">
+          {/* Background Image & Overlay */}
+          <div className="absolute inset-0 z-0">
+              <img 
+                src="https://images.unsplash.com/photo-1560179707-f14e90ef3dab?auto=format&fit=crop&q=80&w=2000" 
+                alt="Dealer Network" 
+                className="w-full h-full object-cover opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-900/60"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 relative z-10 py-24">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+                  {/* Left Content */}
+                  <div className="flex-1 max-w-2xl">
+                      <div className="inline-block px-4 py-1.5 bg-[#E60012] text-white text-sm font-bold rounded-r-full mb-8 animate-pulse shadow-lg shadow-red-600/30">
+                          🔥 业务规模 · 实力见证
+                      </div>
+                      <h2 className="text-5xl lg:text-7xl font-black text-white mb-8 leading-tight tracking-tight">
+                          全国 <span className="text-[#E60012]">750+</span> 覆盖县域
+                          <br />为您服务
+                      </h2>
+                      <p className="text-xl text-gray-300 mb-12 font-medium leading-relaxed max-w-xl">
+                          覆盖全国核心物流节点的金牌服务网络，为您提供<span className="text-white font-bold">标准化、透明化</span>的车后保障。
+                      </p>
+                      
+                      {/* Core Metrics Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl group/metric hover:bg-white/10 transition-all duration-300">
+                              <div className="flex items-center mb-3 text-[#E60012]">
+                                  <MapPin className="w-6 h-6 mr-3" />
+                                  <span className="font-bold text-base text-white/90">业务覆盖城市</span>
+                              </div>
+                              <div className="text-5xl font-black text-white mb-2">750<span className="text-2xl text-[#E60012]">+</span></div>
+                              <div className="text-sm text-white/40 font-medium">统计截至 2025.01</div>
+                          </div>
+                          <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-3xl group/metric hover:bg-white/10 transition-all duration-300">
+                              <div className="flex items-center mb-3 text-[#E60012]">
+                                  <Store className="w-6 h-6 mr-3" />
+                                  <span className="font-bold text-base text-white/90">签约合作门店</span>
+                              </div>
+                              <div className="text-5xl font-black text-white mb-2">2000<span className="text-2xl text-[#E60012]">+</span></div>
+                              <div className="flex items-center text-sm text-white/40 font-medium space-x-3">
+                                  <span>直营 150+</span>
+                                  <span className="w-px h-3 bg-white/20"></span>
+                                  <span>加盟 1850+</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  {/* Right Content - E-commerce Style Badges/Logos */}
+                  <div className="flex-1 w-full max-w-lg">
+                      <div className="grid grid-cols-2 gap-6 mb-10">
+                          {['原厂正品', '全国联保', '价格透明', '专业技师'].map((tag, i) => (
+                              <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-[#E60012] hover:border-[#E60012] transition-colors duration-300 group/tag cursor-default text-center">
+                                  <div className="text-white font-black text-2xl mb-2">{tag}</div>
+                                  <div className="text-white/40 text-xs font-bold tracking-widest uppercase group-hover/tag:text-white/80">Quality Assurance</div>
+                              </div>
+                          ))}
+                      </div>
+                      
+                      {/* Strategic Partners - Redesigned */}
+                      <div className="mt-10">
+                           <h3 className="text-white/40 text-xs font-bold uppercase tracking-[0.2em] mb-6 flex items-center">
+                              <span className="w-8 h-px bg-[#E60012] mr-3"></span>
+                              STRATEGIC PARTNERS
+                           </h3>
+                           <div className="grid grid-cols-2 gap-4">
+                               {[
+                                 { name: 'Mobil', cn: '美孚' },
+                                 { name: 'Shell', cn: '壳牌' },
+                                 { name: 'Bosch', cn: '博世' },
+                                 { name: 'Michelin', cn: '米其林' }
+                               ].map((brand, i) => (
+                                  <div key={i} className="relative group overflow-hidden rounded-2xl bg-[#1A1C2E] border border-white/10 hover:border-[#E60012]/50 transition-all duration-300">
+                                      <div className="absolute inset-0 bg-gradient-to-br from-[#E60012]/0 to-[#E60012]/0 group-hover:from-[#E60012]/10 group-hover:to-transparent transition-all duration-500"></div>
+                                      <div className="relative p-5 flex flex-col items-center justify-center text-center h-24">
+                                          <span className="text-xl font-black text-white group-hover:text-[#E60012] transition-colors duration-300 italic">{brand.name}</span>
+                                          <span className="text-xs text-gray-500 font-medium mt-1 group-hover:text-white/60 transition-colors">{brand.cn}</span>
+                                      </div>
+                                  </div>
+                               ))}
+                           </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
       {/* 3. Solutions by Role - Background Image */}
-      <section className="py-24 bg-[#0A0E17] relative overflow-hidden">
+      <section className="py-32 bg-[#0A0E17] relative overflow-hidden">
         <div className="absolute inset-0 z-0">
              <img 
                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" 
@@ -223,52 +284,81 @@ const AfterSales: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="flex flex-col items-center text-center mb-20">
-             <span className="text-[#E60012] text-xs font-bold tracking-[0.3em] uppercase mb-4">Ecosystem</span>
-             <h2 className="text-4xl font-bold text-white mb-6">多方共赢的生态闭环</h2>
-             <p className="text-gray-500 max-w-2xl">针对产业链上下游痛点，提供场景化的赋能方案</p>
+          <div className="flex flex-col items-center text-center mb-24">
+             <span className="text-[#E60012] text-xs font-bold tracking-[0.3em] uppercase mb-6 animate-pulse">Ecosystem</span>
+             <h2 className="text-5xl font-bold text-white mb-6">多方共赢的生态闭环</h2>
+             <p className="text-gray-500 max-w-2xl text-lg">针对产业链上下游痛点，提供场景化的专属赋能方案</p>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-12">
-            <div className="lg:w-1/3 flex flex-col space-y-3">
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
+            {/* Left: Role Navigation */}
+            <div className="lg:w-1/3 flex flex-col space-y-6 sticky top-24">
               {roles.map((role) => (
                 <button
                   key={role.id}
                   onClick={() => setActiveRole(role.id as any)}
-                  className={`flex items-center space-x-5 p-7 rounded-[28px] transition-all text-left ${
+                  className={`group flex items-center p-6 rounded-2xl transition-all duration-300 text-left border ${
                     activeRole === role.id 
-                      ? 'bg-[#E60012] text-white shadow-2xl shadow-red-600/30 -translate-y-1' 
-                      : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                      ? 'bg-[#E60012] border-[#E60012] text-white shadow-2xl shadow-red-600/20 translate-x-2' 
+                      : 'bg-white/5 border-white/5 text-gray-400 hover:bg-white/10 hover:border-white/10 hover:text-white'
                   }`}
                 >
-                  <div className={`p-4 rounded-2xl ${activeRole === role.id ? 'bg-white/20' : 'bg-white/5'}`}>
+                  <div className={`p-3 rounded-xl mr-5 transition-colors ${activeRole === role.id ? 'bg-white/20' : 'bg-white/5 group-hover:bg-white/10'}`}>
                     {role.icon}
                   </div>
-                  <span className="font-bold text-lg">{role.label}</span>
+                  <div className="flex-1">
+                      <span className="font-bold text-lg block mb-1">{role.label}</span>
+                      <span className={`text-xs block ${activeRole === role.id ? 'text-white/80' : 'text-gray-600'}`}>点击查看专属赋能方案</span>
+                  </div>
+                  <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${activeRole === role.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} />
                 </button>
               ))}
             </div>
 
-            <div className="lg:w-2/3 bg-white/5 backdrop-blur-md rounded-[48px] p-12 lg:p-20 relative overflow-hidden">
-               <div className="absolute top-0 right-0 p-8">
-                  <UserSquare2 className="w-32 h-32 text-white/5" />
-               </div>
-               <div className="relative z-10 animate-in fade-in slide-in-from-right-10 duration-500">
-                  <h3 className="text-3xl font-bold text-white mb-12 flex items-center">
-                    <span className="w-8 h-1 bg-[#E60012] mr-4 rounded-full"></span>
-                    核心赋能权益
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    {roleSolutions[activeRole].map((item, idx) => (
-                      <div key={idx} className="flex items-start">
-                        <CheckCircle2 className="w-6 h-6 text-[#E60012] mt-0.5 mr-4 flex-shrink-0" />
-                        <span className="text-lg text-gray-300 font-light leading-relaxed">{item}</span>
+            {/* Right: Dynamic Content Area */}
+            <div className="lg:w-2/3 w-full">
+               <div className="bg-[#151925] border border-white/5 rounded-[40px] p-12 lg:p-16 relative overflow-hidden min-h-[500px] flex flex-col justify-center transition-all duration-500">
+                   {/* Background Elements */}
+                   <div className="absolute top-0 right-0 w-96 h-96 bg-[#E60012]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                   <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+                   
+                   <div key={activeRole} className="relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-500">
+                      <div className="flex items-center mb-12">
+                          <div className="w-1.5 h-12 bg-[#E60012] rounded-full mr-6"></div>
+                          <div>
+                              <h3 className="text-3xl font-bold text-white mb-2">核心赋能权益</h3>
+                              <p className="text-gray-500 text-sm">为{roles.find(r => r.id === activeRole)?.label}提供的专属价值</p>
+                          </div>
                       </div>
-                    ))}
-                  </div>
-                  <button className="mt-16 px-12 py-5 bg-[#E60012] text-white font-black rounded-full hover:bg-white hover:text-black transition-all shadow-xl shadow-red-600/20">
-                    咨询合作详情
-                  </button>
+
+                      <div className="grid grid-cols-1 gap-6 mb-12">
+                        {roleSolutions[activeRole].map((item, idx) => (
+                          <div key={idx} className="flex items-center bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 hover:border-white/10 transition-all duration-300 group/item">
+                            <div className="w-10 h-10 rounded-full bg-[#E60012]/10 flex items-center justify-center text-[#E60012] mr-6 group-hover/item:bg-[#E60012] group-hover/item:text-white transition-all duration-300">
+                                <CheckCircle2 className="w-5 h-5" />
+                            </div>
+                            <span className="text-lg text-gray-300 font-medium">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between border-t border-white/5 pt-10 mt-auto">
+                          <div className="flex -space-x-3">
+                              {[1,2,3].map(i => (
+                                  <div key={i} className="w-10 h-10 rounded-full bg-gray-800 border-2 border-[#151925] flex items-center justify-center text-xs text-gray-500">
+                                      <UserSquare2 className="w-5 h-5" />
+                                  </div>
+                              ))}
+                              <div className="w-10 h-10 rounded-full bg-[#E60012] border-2 border-[#151925] flex items-center justify-center text-xs text-white font-bold pl-1">
+                                  99+
+                              </div>
+                          </div>
+                          <button className="px-10 py-4 bg-[#E60012] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all shadow-lg shadow-red-900/20 flex items-center group/btn">
+                            咨询合作详情
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </button>
+                      </div>
+                   </div>
                </div>
             </div>
           </div>
