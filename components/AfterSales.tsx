@@ -77,7 +77,7 @@ const AfterSales: React.FC = () => {
               为物流车辆提供从配件采购、维修保养到金融保险的全生命周期数字化服务。
             </p>
             
-            <div className="flex items-center space-x-12">
+            <div className="flex items-center space-x-12 hidden">
               <div className="text-white">
                 <div className="text-4xl font-black text-[#E60012] mb-1">750+</div>
                 <div className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">覆盖县域</div>
@@ -93,7 +93,7 @@ const AfterSales: React.FC = () => {
       </section>
 
       {/* 2. Core Values - Upgraded Visuals */}
-      <section className="py-24 bg-white relative">
+      <section className="py-24 bg-gray-50 relative">
         {/* Background Image for Core Values Section */}
         <div className="absolute inset-0 z-0">
              <img 
@@ -150,16 +150,64 @@ const AfterSales: React.FC = () => {
                  {/* Title */}
                  <h4 className="text-2xl font-black mt-8 mb-4 text-gray-900 group-hover:text-[#E60012] transition-colors relative z-20">{item.title}</h4>
 
-                  {/* Description Box */}
-                  <div className="mt-4 w-[120%] bg-[#E60012] p-6 rounded-2xl text-white text-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 absolute top-[85%] left-1/2 -translate-x-1/2 z-50 shadow-2xl shadow-red-600/30">
-                      <div className="w-6 h-6 bg-[#E60012] rotate-45 absolute -top-3 left-1/2 -translate-x-1/2"></div>
-                      <p className="font-bold text-xl leading-relaxed">{item.desc}</p>
+                  {/* Description Box - Modified to match Logistics Page style: Full width overlay below icons */}
+                  <div className="mt-4 w-[280px] md:w-[320px] bg-black/60 backdrop-blur-md p-6 rounded-2xl flex items-center px-6 py-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 absolute top-[85%] left-1/2 -translate-x-1/2 z-50 shadow-2xl shadow-black/50 pointer-events-none">
+                      <div className="w-1.5 h-full min-h-[40px] bg-[#E60012] rounded-full mr-4 shrink-0"></div>
+                      <p className="font-bold text-lg leading-relaxed text-white text-left">{item.desc}</p>
                   </div>
               </div>
             ))}
           </div>
-          {/* Spacer to prevent hover content from being cut off or overlapping next section too much */}
-          <div className="h-32"></div>
+        </div>
+      </section>
+
+      {/* 2.1 Business Scale & Partners Module - Separate Section */}
+      <section className="py-24 bg-gray-50 relative">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="py-16 bg-white rounded-[32px] border border-red-100 overflow-hidden relative">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#E60012 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+              
+              <div className="max-w-7xl mx-auto px-8 relative z-10">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+                  {/* Left: Impact Numbers - Customized for AfterSales */}
+                  <div className="flex-1 text-center md:text-left">
+                    <div className="inline-flex items-center space-x-2 bg-red-100 text-[#E60012] px-3 py-1 rounded-full text-sm font-bold mb-4 animate-bounce">
+                      <span className="w-2 h-2 bg-[#E60012] rounded-full"></span>
+                      <span>万联驿站 · 实力见证</span>
+                    </div>
+                    <div className="flex flex-col gap-6">
+                       <div>
+                          <div className="flex items-baseline justify-center md:justify-start">
+                             <h2 className="text-5xl md:text-6xl font-black text-[#E60012] mb-0 mx-2 drop-shadow-sm">750+</h2>
+                             <span className="text-2xl font-bold text-gray-900">覆盖县域</span>
+                          </div>
+                          <p className="text-gray-500 mt-2 font-medium">服务网络遍布全国核心物流节点</p>
+                       </div>
+                       <div className="w-full h-px bg-red-200/50"></div>
+                       <div>
+                          <div className="flex items-baseline justify-center md:justify-start">
+                             <h2 className="text-5xl md:text-6xl font-black text-[#E60012] mb-0 mx-2 drop-shadow-sm">2000+</h2>
+                             <span className="text-2xl font-bold text-gray-900">联营网点</span>
+                          </div>
+                          <p className="text-gray-500 mt-2 font-medium">标准化认证门店，服务质量有保障</p>
+                       </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Partner Logos - Auto Brands & Parts */}
+                  <div className="flex-1 w-full">
+                    <div className="grid grid-cols-3 gap-4">
+                      {['Mobil 美孚', 'Shell 壳牌', 'Michelin 米其林', 'Bridgestone', 'Bosch 博世', 'Cummins 康明斯'].map((logo, i) => (
+                        <div key={i} className="bg-white h-24 rounded-xl shadow-sm border border-red-50 flex items-center justify-center group hover:shadow-md hover:scale-105 transition-all duration-300 p-4 text-center">
+                          <span className="font-bold text-gray-500 group-hover:text-[#E60012] transition-colors text-sm md:text-base">{logo}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
       </section>
 
