@@ -7,7 +7,19 @@ const PlatformModules: React.FC = () => {
   const [previewItem, setPreviewItem] = useState<{ url: string; name: string } | null>(null);
 
   const handlePlatformClick = (id: string) => {
-    window.location.href = `/platform/${id}`;
+    // 撮合平台特殊处理，跳转到独立页
+    if (id === 'matching') {
+        window.location.hash = '#platform/matching';
+        return;
+    }
+    // 车后电商特殊处理，跳转到车后服务页
+    if (id === 'aftermarket') {
+        window.location.hash = '#aftersales';
+        return;
+    }
+    // 其他平台暂无独立页，暂时保留原样或提示
+    // window.location.href = `/platform/${id}`; 
+    console.log(`Navigate to ${id}`);
   };
 
   return (
@@ -73,14 +85,14 @@ const PlatformModules: React.FC = () => {
               </p>
 
               <button 
-                className="flex items-center space-x-3 text-white font-bold mb-8 lg:mb-20 group/btn hover:text-[#E60012] transition-colors lg:ml-6 lg:ml-10 text-lg lg:text-xl"
+                className="flex items-center space-x-6 text-white font-bold mb-8 lg:mb-20 group/btn hover:text-[#E60012] transition-colors lg:ml-6 lg:ml-10 text-4xl lg:text-5xl"
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePlatformClick(platform.id);
                 }}
               >
                 <span>查看详情</span>
-                <ArrowRight className="w-6 h-6 lg:w-7 lg:h-7 group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight className="w-12 h-12 lg:w-14 lg:h-14 group-hover/btn:translate-x-2 transition-transform" />
               </button>
 
               {/* 核心能力图标网格 - 调整后：悬停显示长条红框描述，覆盖下方区域 */}

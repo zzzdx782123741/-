@@ -7,11 +7,12 @@ import PlatformModules from './components/PlatformModules';
 import StatsSection from './components/StatsSection';
 import LogoTicker from './components/LogoTicker';
 import AfterSales from './components/AfterSales';
+import MatchmakingPage from './components/MatchmakingPage';
 import SideNavigation from './components/SideNavigation';
 
 const App: React.FC = () => {
-  // 简单的路由状态：'home' (物流官网) | 'aftersales' (车后服务独立页)
-  const [currentPath, setCurrentPath] = useState<'home' | 'aftersales'>('home');
+  // 简单的路由状态：'home' | 'aftersales' | 'matchmaking'
+  const [currentPath, setCurrentPath] = useState<'home' | 'aftersales' | 'matchmaking'>('home');
 
   // 监听导航点击事件（通过 URL Hash 模拟简单路由）
   useEffect(() => {
@@ -19,6 +20,9 @@ const App: React.FC = () => {
       const hash = window.location.hash;
       if (hash === '#aftersales') {
         setCurrentPath('aftersales');
+        window.scrollTo(0, 0);
+      } else if (hash.includes('platform/matching')) {
+        setCurrentPath('matchmaking');
         window.scrollTo(0, 0);
       } else {
         setCurrentPath('home');
@@ -39,10 +43,12 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-red-100 selection:text-[#E60012]">
-      {/* 统一头部，通过 props 感知当前页面状态 */}
-      <Header currentPath={currentPath} onNavigate={navigateTo} />
+      {/* 统一头部，通过 props 感知当前页面状态 (Matchmaking 页有自己的头部，隐藏全局头部) */}
+      {currentPath !== 'matchmaking' && (
+        <Header currentPath={currentPath === 'aftersales' ? 'aftersales' : 'home'} onNavigate={navigateTo} />
+      )}
 
-      <main className="flex-grow snap-y snap-mandatory h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scroll-pt-0">
+      <main className={`flex-grow ${currentPath === 'matchmaking' ? '' : 'snap-y snap-mandatory h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scroll-pt-0'}`}>
         {currentPath === 'home' ? (
           /* --- 独立物流官网页面内容 --- */
           <div className="animate-in fade-in duration-500">
@@ -53,13 +59,17 @@ const App: React.FC = () => {
             <Footer />
             <SideNavigation />
           </div>
-        ) : (
+        ) : currentPath === 'aftersales' ? (
           /* --- 独立车后服务页面内容 --- */
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pt-20">
             <AfterSales />
           </div>
+        ) : (
+          /* --- 撮合交易详情页 --- */
+          <MatchmakingPage />
         )}
       </main>
+
 
       {/* 回到顶部悬浮按钮 */}
       <div className="fixed right-6 bottom-10 z-[100] flex flex-col space-y-3">

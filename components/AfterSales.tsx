@@ -52,15 +52,15 @@ const AfterSales: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* 1. After-Sales Banner */}
+      {/* 1. After-Sales Banner - Background Image */}
       <section className="relative h-[600px] bg-[#1A1C2E] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1486006396193-47135889AF4D?auto=format&fit=crop&q=80&w=2000" 
-            className="w-full h-full object-cover opacity-40 scale-105" 
-            alt="Auto service"
+            src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=80&w=2000" 
+            className="w-full h-full object-cover opacity-30 scale-105 mix-blend-overlay" 
+            alt="Car mechanic workshop"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1C2E] via-[#1A1C2E]/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#1E293B]/80 to-[#1E3A8A]/40"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 relative z-10 w-full">
@@ -92,10 +92,19 @@ const AfterSales: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. Core Values */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      {/* 2. Core Values - Upgraded Visuals */}
+      <section className="py-24 bg-white relative">
+        {/* Background Image for Core Values Section */}
+        <div className="absolute inset-0 z-0">
+             <img 
+               src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=2000" 
+               alt="Business Analysis" 
+               className="w-full h-full object-cover opacity-5"
+             />
+        </div>
+        
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gray-50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 -z-10"></div>
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">核心服务价值</h2>
@@ -111,26 +120,61 @@ const AfterSales: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: '正品溯源', desc: '平台直连大牌厂商，全链条溯源，确保每一件配件均为原厂正品。', icon: <ShieldCheck className="w-8 h-8" /> },
-              { title: '价格透明', desc: '全国统一结算价，告别线下维修“看人下菜”的行业乱象。', icon: <BarChart4 className="w-8 h-8" /> },
-              { title: '数字监管', desc: '维修过程线上可视化，服务工单实时归档，质量可追溯。', icon: <RefreshCcw className="w-8 h-8" /> },
-              { title: '极速响应', desc: '依托全国网点布局，为长途货运提供紧急救援及快速维保服务。', icon: <Settings2 className="w-8 h-8" /> },
+              { 
+                title: '正品溯源', 
+                desc: '平台直连大牌厂商，全链条溯源，确保每一件配件均为原厂正品。', 
+                icon: <ShieldCheck className="w-16 h-16" />
+              },
+              { 
+                title: '价格透明', 
+                desc: '全国统一结算价，告别线下维修“看人下菜”的行业乱象。', 
+                icon: <BarChart4 className="w-16 h-16" />
+              },
+              { 
+                title: '数字监管', 
+                desc: '维修过程线上可视化，服务工单实时归档，质量可追溯。', 
+                icon: <RefreshCcw className="w-16 h-16" />
+              },
+              { 
+                title: '极速响应', 
+                desc: '依托全国网点布局，为长途货运提供紧急救援及快速维保服务。', 
+                icon: <Settings2 className="w-16 h-16" />
+              },
             ].map((item, idx) => (
-              <div key={idx} className="p-10 rounded-[32px] bg-white border border-gray-100 hover:border-[#E60012]/30 hover:shadow-2xl hover:shadow-red-600/5 transition-all duration-500 group">
-                <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:text-[#E60012] group-hover:bg-red-50 transition-colors mb-8">
-                  {item.icon}
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+              <div key={idx} className="group flex flex-col items-center relative z-20">
+                 {/* Square Icon Container */}
+                 <div className="w-36 h-36 bg-white rounded-3xl flex items-center justify-center text-[#E60012] shadow-2xl border border-gray-100 group-hover:scale-110 transition-transform duration-300 z-20 relative bg-white">
+                   {item.icon}
+                 </div>
+                 
+                 {/* Title */}
+                 <h4 className="text-2xl font-black mt-8 mb-4 text-gray-900 group-hover:text-[#E60012] transition-colors relative z-20">{item.title}</h4>
+
+                  {/* Description Box */}
+                  <div className="mt-4 w-[120%] bg-[#E60012] p-6 rounded-2xl text-white text-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 absolute top-[85%] left-1/2 -translate-x-1/2 z-50 shadow-2xl shadow-red-600/30">
+                      <div className="w-6 h-6 bg-[#E60012] rotate-45 absolute -top-3 left-1/2 -translate-x-1/2"></div>
+                      <p className="font-bold text-xl leading-relaxed">{item.desc}</p>
+                  </div>
               </div>
             ))}
           </div>
+          {/* Spacer to prevent hover content from being cut off or overlapping next section too much */}
+          <div className="h-32"></div>
         </div>
       </section>
 
-      {/* 3. Solutions by Role (The dark UI for contrast) */}
-      <section className="py-24 bg-[#0A0E17]">
-        <div className="max-w-7xl mx-auto px-4">
+      {/* 3. Solutions by Role - Background Image */}
+      <section className="py-24 bg-[#0A0E17] relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+             <img 
+               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" 
+               alt="Digital Connection" 
+               className="w-full h-full object-cover opacity-10 mix-blend-screen"
+             />
+             <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E17] via-[#0A0E17]/90 to-[#0A0E17]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col items-center text-center mb-20">
              <span className="text-[#E60012] text-xs font-bold tracking-[0.3em] uppercase mb-4">Ecosystem</span>
              <h2 className="text-4xl font-bold text-white mb-6">多方共赢的生态闭环</h2>
@@ -183,9 +227,17 @@ const AfterSales: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Form Section */}
-      <section className="py-32 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
+      {/* 4. Form Section - Background Image */}
+      <section className="py-32 bg-gray-50 relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+             <img 
+               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
+               alt="Office Collaboration" 
+               className="w-full h-full object-cover opacity-5"
+             />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
           <div className="bg-white rounded-[60px] shadow-2xl p-12 lg:p-20 relative border border-gray-100">
             {submitted ? (
               <div className="py-20 text-center animate-in zoom-in duration-500">
