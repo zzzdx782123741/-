@@ -17,6 +17,11 @@ const PlatformModules: React.FC = () => {
         window.location.hash = '#aftersales';
         return;
     }
+    // 多式联运平台特殊处理，跳转到外部链接
+    if (id === 'multimodal') {
+        window.open('https://www.10000da.cn/multimodal-transport', '_blank');
+        return;
+    }
     // 其他平台暂无独立页，暂时保留原样或提示
     // window.location.href = `/platform/${id}`; 
     console.log(`Navigate to ${id}`);
@@ -116,8 +121,8 @@ const PlatformModules: React.FC = () => {
                         </span>
                     </div>
                     
-                    {/* 全宽描述框 */}
-                    <div className="absolute top-[180px] left-0 w-[400%] -left-[0%] group-first/cap:left-0 group-last/cap:-left-[300%] group-[&:nth-child(2)]/cap:-left-[100%] group-[&:nth-child(3)]/cap:-left-[200%] h-auto min-h-[60px] bg-black/60 backdrop-blur-md rounded-[16px] flex items-center px-8 py-4 opacity-0 group-hover/cap:opacity-100 transition-all duration-300 z-30 pointer-events-none shadow-2xl shadow-black/50 border border-white/10">
+                    {/* 全宽描述框 - 仅桌面端显示，移动端隐藏以防溢出 */}
+                    <div className="hidden lg:flex absolute top-[180px] left-0 w-[400%] -left-[0%] group-first/cap:left-0 group-last/cap:-left-[300%] group-[&:nth-child(2)]/cap:-left-[100%] group-[&:nth-child(3)]/cap:-left-[200%] h-auto min-h-[60px] bg-black/60 backdrop-blur-md rounded-[16px] items-center px-8 py-4 opacity-0 group-hover/cap:opacity-100 transition-all duration-300 z-30 pointer-events-none shadow-2xl shadow-black/50 border border-white/10">
                         <div className="w-1.5 h-10 bg-[#E60012] rounded-full mr-6 shrink-0"></div>
                         <p className="text-xl md:text-2xl text-white font-bold leading-relaxed tracking-wide">
                             {cap.description}

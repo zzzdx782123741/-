@@ -117,9 +117,9 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const BUSINESS_ENTRANCE = [
   { label: '撮合交易平台入口：易达宝货主端', path: '#' },
-  { label: '网络货运平台入口：万联通企业端', path: '#' },
+  { label: '网络货运平台入口：万连通企业端', path: '#' },
   { label: 'TMS平台入口：易达宝货主端', path: '#' },
-  { label: '车后电商平台入口：万联通经销商端', path: '#' },
+  { label: '车后电商平台入口：万连通经销商端', path: '#' },
 ];
 
 export const CUSTOMERS = [
@@ -133,7 +133,7 @@ export const CUSTOMERS = [
   { name: '顺丰', logo: 'https://logo.clearbit.com/sf-express.com' },
   { name: '京东物流', logo: 'https://logo.clearbit.com/jdwl.com' },
   { name: '中核集团', logo: 'https://logo.clearbit.com/cnnc.com.cn' },
-  { name: '万联通', logo: '/logo.png' },
+  { name: '万连通', logo: '/logo.png' },
   { name: '鞍钢集团', logo: 'https://logo.clearbit.com/ansteel.cn' },
 ];
 

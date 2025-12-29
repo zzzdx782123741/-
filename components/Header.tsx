@@ -12,7 +12,7 @@ interface HeaderProps {
 const LogoIcon = () => (
   <img 
     src="/logo.png" 
-    alt="万联通 Logo" 
+    alt="万连通 Logo" 
     className="w-9 h-9 object-contain"
   />
 );
@@ -34,36 +34,23 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-[0_1px_0_rgba(0,0,0,0.05)] z-50">
       <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         <div className="flex items-center space-x-12">
-          {/* Logo 部分 - 点击回首页 */}
-          <button 
+          {/* Logo Area */}
+          <div 
+            className="flex items-center space-x-3 cursor-pointer group" 
             onClick={() => onNavigate('home')}
-            className="flex items-center group transition-all"
           >
-             <div className="mr-3 transition-transform group-hover:scale-110 duration-500">
-               {/* 红色立方体 Logo - 替换为图片 */}
-               <img 
-                 src="/logo.png" 
-                 alt="万连通 Logo" 
-                 className="w-10 h-10 object-contain"
-                 onError={(e) => {
-                   // 如果图片加载失败，回退到 SVG
-                   e.currentTarget.style.display = 'none';
-                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                 }}
-               />
-               <svg className="w-10 h-10 hidden" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M20 0L37.3205 10V30L20 40L2.67949 30V10L20 0Z" fill="#E60012"/>
-                 <path d="M20 22L11 17V7L20 12L29 7V17L20 22Z" fill="white" fillOpacity="0.9"/>
-                 <path d="M20 22V32" stroke="white" strokeWidth="2"/>
-               </svg>
-             </div>
-             <div className="flex flex-col text-left justify-center">
-                <div className="flex items-center">
-                  <span className="text-3xl font-black tracking-tight text-gray-900 leading-none">万连通</span>
-                </div>
-                <span className="text-[11px] text-gray-500 font-medium tracking-wider mt-1.5 leading-none">万联易达集团旗下物流服务平台</span>
-             </div>
-          </button>
+            <div className="w-10 h-10 bg-[#E60012] rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform duration-300">
+              <span className="text-white font-black text-2xl italic">W</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-[#E60012] transition-colors">
+                万连通
+              </span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">
+                Wanlian Logistics
+              </span>
+            </div>
+          </div>
 
           {/* 导航链接 */}
           <div className="hidden lg:flex items-center space-x-10">

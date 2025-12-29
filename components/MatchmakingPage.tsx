@@ -344,14 +344,14 @@ const MatchmakingPage: React.FC = () => {
         {activeTab === 'cargo' && (
           <div className="w-full min-h-screen bg-white">
             {/* 2. Banner (App Download Focus) */}
-            <section className="relative h-[600px] flex items-center justify-center overflow-hidden bg-blue-900 text-white">
+            <section className="relative h-[600px] flex items-center justify-center overflow-hidden bg-gray-900 text-white">
               <div className="absolute inset-0">
                 <img 
                   src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000" 
                   alt="Logistics Truck Highway" 
                   className="w-full h-full object-cover opacity-40 mix-blend-overlay"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A] via-[#1E3A8A]/90 to-[#1E40AF]/60"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
               </div>
               <div className="relative z-10 max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center justify-between gap-12">
                 <div className="flex-1 text-center md:text-left">
@@ -387,12 +387,12 @@ const MatchmakingPage: React.FC = () => {
             {/* 3. Benefits - Upgraded Visuals */}
             <section className="py-24 bg-white relative overflow-hidden">
               {/* Decorative Blobs */}
-              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+              <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-50/50 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
 
               <div className="max-w-7xl mx-auto px-4">
                  <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-                    车主专享 <span className="text-blue-600">四大权益</span>
+                    车主专享 <span className="text-[#E60012]">四大权益</span>
                   </h2>
                   <p className="text-xl text-gray-500 max-w-2xl mx-auto">
                     海量货源随心挑，结算快人一步
@@ -406,23 +406,23 @@ const MatchmakingPage: React.FC = () => {
                     { icon: <TrendingDown className="w-12 h-12" />, title: '不空返', highlight: '智能配载', desc: '大数据分析区域货源，智能推荐回程单' },
                     { icon: <ShieldCheck className="w-12 h-12" />, title: '没套路', highlight: '价格透明', desc: '无任何隐形收费，让您赚得明明白白' }
                   ].map((item, idx) => (
-                    <div key={idx} className="relative p-8 rounded-[2rem] transition-all duration-500 group overflow-hidden bg-white border border-gray-100 hover:border-transparent hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2">
+                    <div key={idx} className="relative p-8 rounded-[2rem] transition-all duration-500 group overflow-hidden bg-white border border-gray-100 hover:border-transparent hover:shadow-2xl hover:shadow-red-600/20 hover:-translate-y-2">
                       {/* Gradient Background on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#E60012] to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
                       {/* Content Container */}
                       <div className="relative z-10">
-                        <div className="bg-blue-50 w-20 h-20 rounded-2xl flex items-center justify-center mb-8 text-blue-600 group-hover:bg-white/20 group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-lg group-hover:scale-110">
+                        <div className="bg-red-50 w-20 h-20 rounded-2xl flex items-center justify-center mb-8 text-[#E60012] group-hover:bg-white/20 group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-lg group-hover:scale-110">
                           {item.icon}
                         </div>
                         
                         <h3 className="text-3xl font-black italic mb-2 text-gray-900 group-hover:text-white transition-colors tracking-tight">
                           {item.title}
                         </h3>
-                         <div className="text-lg font-bold text-blue-600 mb-4 opacity-80 group-hover:text-blue-100 group-hover:opacity-100">
+                         <div className="text-lg font-bold text-[#E60012] mb-4 opacity-80 group-hover:text-red-100 group-hover:opacity-100">
                           {item.highlight}
                         </div>
-                        <p className="text-gray-500 font-medium text-lg leading-relaxed group-hover:text-blue-50 transition-colors">
+                        <p className="text-gray-500 font-medium text-lg leading-relaxed group-hover:text-red-50 transition-colors">
                           {item.desc}
                         </p>
                       </div>
@@ -445,9 +445,9 @@ const MatchmakingPage: React.FC = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                   {[
                     { val: '10w+', label: '日均货源', sub: '实时更新', color: 'text-[#E60012]' },
-                    { val: '300+', label: '覆盖城市', sub: '全国通达', color: 'text-blue-500' },
-                    { val: '200w+', label: '注册司机', sub: '实名认证', color: 'text-yellow-500' },
-                    { val: '5000+', label: '合作企业', sub: '长期稳定', color: 'text-green-500' }
+                    { val: '300+', label: '覆盖城市', sub: '全国通达', color: 'text-white' },
+                    { val: '200w+', label: '注册司机', sub: '实名认证', color: 'text-white' },
+                    { val: '5000+', label: '合作企业', sub: '长期稳定', color: 'text-white' }
                   ].map((item, i) => (
                     <div key={i} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
                       <div className={`text-5xl md:text-6xl font-black ${item.color} mb-2 tracking-tighter drop-shadow-[0_0_15px_rgba(230,0,18,0.3)] group-hover:scale-110 transition-transform`}>
@@ -472,9 +472,9 @@ const MatchmakingPage: React.FC = () => {
             <section className="py-24 bg-white overflow-hidden">
                <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
                  <div className="flex-1 text-center md:text-left">
-                    <div className="text-blue-600 font-bold tracking-widest uppercase mb-4">Driver Super App</div>
+                    <div className="text-[#E60012] font-bold tracking-widest uppercase mb-4">Driver Super App</div>
                     <h2 className="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
-                      好货抢单 <span className="text-blue-600">快人一步</span><br/>
+                      好货抢单 <span className="text-[#E60012]">快人一步</span><br/>
                       赚钱就是这么简单
                     </h2>
                     <p className="text-xl text-gray-500 mb-8 leading-relaxed">
@@ -483,19 +483,19 @@ const MatchmakingPage: React.FC = () => {
                     </p>
                     <ul className="space-y-4 mb-10 text-left max-w-md mx-auto md:mx-0">
                       <li className="flex items-center space-x-3">
-                        <CheckCircle className="w-6 h-6 text-blue-600 shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-[#E60012] shrink-0" />
                         <span className="text-lg font-medium text-gray-700">千人千面智能推荐，只看想跑的路线</span>
                       </li>
                       <li className="flex items-center space-x-3">
-                        <CheckCircle className="w-6 h-6 text-blue-600 shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-[#E60012] shrink-0" />
                         <span className="text-lg font-medium text-gray-700">运费担保交易，卸货即刻到账提现</span>
                       </li>
                       <li className="flex items-center space-x-3">
-                        <CheckCircle className="w-6 h-6 text-blue-600 shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-[#E60012] shrink-0" />
                         <span className="text-lg font-medium text-gray-700">货车专用导航，避开限行少绕路</span>
                       </li>
                     </ul>
-                    <button className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-700 transition-colors shadow-xl shadow-blue-500/30">
+                    <button className="bg-[#E60012] text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-red-700 transition-colors shadow-xl shadow-red-600/30">
                       立即下载抢单 &rarr;
                     </button>
                  </div>
@@ -530,7 +530,7 @@ const MatchmakingPage: React.FC = () => {
                              
                              {/* Tabs */}
                              <div className="flex bg-gray-100 p-1 rounded-lg">
-                               <div className="flex-1 bg-white shadow-sm rounded-md py-1.5 text-center text-sm font-bold text-blue-600">推荐货源</div>
+                               <div className="flex-1 bg-white shadow-sm rounded-md py-1.5 text-center text-sm font-bold text-[#E60012]">推荐货源</div>
                                <div className="flex-1 py-1.5 text-center text-sm font-medium text-gray-500">订阅路线</div>
                              </div>
                            </div>
@@ -576,7 +576,7 @@ const MatchmakingPage: React.FC = () => {
                                 </div>
                                 <div className="flex items-center justify-between">
                                   <div className="text-[10px] text-gray-400">装货时间：今日 18:00</div>
-                                  <button className="bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-bold">查看详情</button>
+                                  <button className="bg-[#E60012] text-white px-4 py-1.5 rounded-full text-sm font-bold">查看详情</button>
                                 </div>
                               </div>
                               

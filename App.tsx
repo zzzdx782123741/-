@@ -8,11 +8,17 @@ import StatsSection from './components/StatsSection';
 import LogoTicker from './components/LogoTicker';
 import AfterSales from './components/AfterSales';
 import MatchmakingPage from './components/MatchmakingPage';
+import MultimodalPage from './components/MultimodalPage';
 import SideNavigation from './components/SideNavigation';
+import MonitorDashboard from './components/MonitorDashboard';
+import { useAnalytics } from './utils/analytics';
 
 const App: React.FC = () => {
-  // 简单的路由状态：'home' | 'aftersales' | 'matchmaking'
-  const [currentPath, setCurrentPath] = useState<'home' | 'aftersales' | 'matchmaking'>('home');
+  // 简单的路由状态：'home' | 'aftersales' | 'matchmaking' | 'multimodal' | 'monitor'
+  const [currentPath, setCurrentPath] = useState<'home' | 'aftersales' | 'matchmaking' | 'multimodal' | 'monitor'>('home');
+
+  // 启动数据采集
+  useAnalytics();
 
   // 监听导航点击事件（通过 URL Hash 模拟简单路由）
   useEffect(() => {
@@ -23,6 +29,12 @@ const App: React.FC = () => {
         window.scrollTo(0, 0);
       } else if (hash.includes('platform/matching')) {
         setCurrentPath('matchmaking');
+        window.scrollTo(0, 0);
+      } else if (hash.includes('platform/multimodal')) {
+        setCurrentPath('multimodal');
+        window.scrollTo(0, 0);
+      } else if (hash.includes('admin/monitor')) {
+        setCurrentPath('monitor');
         window.scrollTo(0, 0);
       } else {
         setCurrentPath('home');
@@ -41,14 +53,18 @@ const App: React.FC = () => {
     window.location.hash = path === 'home' ? '' : path;
   };
 
+  if (currentPath === 'monitor') {
+    return <MonitorDashboard />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-red-100 selection:text-[#E60012]">
-      {/* 统一头部，通过 props 感知当前页面状态 (Matchmaking 页有自己的头部，隐藏全局头部) */}
-      {currentPath !== 'matchmaking' && (
+      {/* 统一头部，通过 props 感知当前页面状态 (Matchmaking/Multimodal 页有自己的头部，隐藏全局头部) */}
+      {currentPath !== 'matchmaking' && currentPath !== 'multimodal' && (
         <Header currentPath={currentPath === 'aftersales' ? 'aftersales' : 'home'} onNavigate={navigateTo} />
       )}
 
-      <main className={`flex-grow ${currentPath === 'matchmaking' ? '' : 'snap-y snap-mandatory h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scroll-pt-0'}`}>
+      <main className={`flex-grow ${['matchmaking', 'multimodal'].includes(currentPath) ? '' : 'snap-y snap-mandatory h-screen overflow-y-scroll overflow-x-hidden scroll-smooth scroll-pt-0'}`}>
         {currentPath === 'home' ? (
           /* --- 独立物流官网页面内容 --- */
           <div className="animate-in fade-in duration-500">
@@ -64,6 +80,9 @@ const App: React.FC = () => {
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pt-20">
             <AfterSales />
           </div>
+        ) : currentPath === 'multimodal' ? (
+          /* --- 多式联运详情页 --- */
+          <MultimodalPage />
         ) : (
           /* --- 撮合交易详情页 --- */
           <MatchmakingPage />

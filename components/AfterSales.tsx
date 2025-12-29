@@ -28,7 +28,7 @@ const AfterSales: React.FC = () => {
   const roles = [
     { id: 'brand', label: '品牌商/经销商', icon: <Store className="w-5 h-5" /> },
     { id: 'shop', label: '维修门店', icon: <Settings2 className="w-5 h-5" /> },
-    { id: 'driver', label: '司机与中小车队', icon: <Truck className="w-5 h-5" /> },
+    { id: 'driver', label: '司机与车队', icon: <Truck className="w-5 h-5" /> },
   ];
 
   const valueItems = [
@@ -137,7 +137,7 @@ const AfterSales: React.FC = () => {
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">核心服务价值</h2>
               <div className="w-16 h-1 bg-[#E60012] rounded-full mb-6"></div>
-              <p className="text-gray-500 text-lg">依托万联通强大的运力基石，打造透明、标准、高效的车后综合服务体系</p>
+              <p className="text-gray-500 text-lg">依托万连通强大的运力基石，打造透明、标准、高效的车后综合服务体系</p>
             </div>
             <div className="flex space-x-4">
               <div className="p-4 bg-red-50 text-[#E60012] rounded-2xl">
@@ -376,7 +376,7 @@ const AfterSales: React.FC = () => {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <div className="bg-white rounded-[60px] shadow-2xl p-12 lg:p-20 relative border border-gray-100">
+          <div className="bg-white rounded-[60px] shadow-2xl p-6 lg:p-20 relative border border-gray-100">
             {submitted ? (
               <div className="py-20 text-center animate-in zoom-in duration-500">
                 <div className="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-10 shadow-lg">

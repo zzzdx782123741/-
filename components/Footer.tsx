@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-white">隐私政策</a>
           </div>
           <div className="flex flex-col items-center space-y-1">
-            <p className="text-[11px] text-gray-600">Copyright©万联通易达物流科技有限公司All Rights Reserved. 版权所有</p>
+            <p className="text-[11px] text-gray-600">Copyright©万连通易达物流科技有限公司All Rights Reserved. 版权所有</p>
           </div>
         </div>
       </div>
