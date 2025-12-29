@@ -36,20 +36,14 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
         <div className="flex items-center space-x-12">
           {/* Logo Area */}
           <div 
-            className="flex items-center space-x-3 cursor-pointer group" 
+            className="flex items-center cursor-pointer" 
             onClick={() => onNavigate('home')}
           >
-            <div className="w-10 h-10 bg-[#E60012] rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-white font-black text-2xl italic">W</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-[#E60012] transition-colors">
-                万连通
-              </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">
-                Wanlian Logistics
-              </span>
-            </div>
+            <img 
+              src="/logo-full.png" 
+              alt="万连通 Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* 导航链接 */}

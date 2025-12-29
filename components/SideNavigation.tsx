@@ -12,7 +12,6 @@ const SideNavigation: React.FC = () => {
     })),
     { id: 'section-stats', label: '业务规模' },
     { id: 'section-partners', label: '合作伙伴' },
-    { id: 'safety', label: '安全合规' },
     { id: 'footer', label: '联系我们' },
   ];
 
