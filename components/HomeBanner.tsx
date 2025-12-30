@@ -5,9 +5,9 @@ import { ArrowRight } from 'lucide-react';
 const SLIDES = [
   {
     id: 'original',
-    type: 'overlay',
-    image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=2000',
-    alt: 'Red Logistics Truck'
+    type: 'image',
+    image: '/banner-new.png',
+    alt: '易达宝系列产品上线'
   },
   {
     id: 'new',
