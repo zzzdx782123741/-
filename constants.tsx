@@ -133,7 +133,7 @@ export const CUSTOMERS = [
   { name: '顺丰', logo: 'https://logo.clearbit.com/sf-express.com' },
   { name: '京东物流', logo: 'https://logo.clearbit.com/jdwl.com' },
   { name: '中核集团', logo: 'https://logo.clearbit.com/cnnc.com.cn' },
-  { name: '万连通', logo: '/logo.png' },
+  { name: 'WLT', logo: '/logo.png' },
   { name: '鞍钢集团', logo: 'https://logo.clearbit.com/ansteel.cn' },
 ];
 

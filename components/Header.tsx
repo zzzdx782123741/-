@@ -12,7 +12,7 @@ interface HeaderProps {
 const LogoIcon = () => (
   <img 
     src="/logo.png" 
-    alt="万连通 Logo" 
+    alt="WLT Logo" 
     className="w-9 h-9 object-contain"
   />
 );
@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           >
             <img 
               src="/logo-full.png" 
-              alt="万连通 Logo" 
+              alt="WLT Logo" 
               className="h-12 w-auto object-contain"
             />
           </div>

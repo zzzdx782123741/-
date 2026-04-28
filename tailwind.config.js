@@ -15,7 +15,7 @@ export default {
           700: '#b91c1c',
           900: '#7f1d1d',
         },
-        wanlian: {
+        wlt: {
           red: '#E60012',
           dark: '#1A1C2E',
           light: '#F8FAFC',

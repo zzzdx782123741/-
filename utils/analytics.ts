@@ -46,9 +46,9 @@ const getBrowserFingerprint = (): string => {
     ctx.fillStyle = "#f60";
     ctx.fillRect(125, 1, 62, 20);
     ctx.fillStyle = "#069";
-    ctx.fillText("Wanlian Logistics", 2, 15);
+    ctx.fillText("WLT", 2, 15);
     ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
-    ctx.fillText("Wanlian Logistics", 4, 17);
+    ctx.fillText("WLT", 4, 17);
 
     // Hashing the data URL
     const dataUrl = canvas.toDataURL();

@@ -74,8 +74,8 @@ const HomeBanner: React.FC = () => {
           {slide.type === 'overlay' && (
             <div className="relative z-10 max-w-[1920px] mx-auto px-4 md:px-12 w-full h-full flex flex-col justify-center">
               <div className="max-w-7xl">
-                <div className="inline-block px-6 py-2 bg-wanlian-red/20 border border-wanlian-red/40 text-red-400 text-base font-bold rounded-full mb-12 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
-                  万连通 · 智慧物流生态
+                <div className="inline-block px-6 py-2 bg-wlt-red/20 border border-wlt-red/40 text-red-400 text-base font-bold rounded-full mb-12 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  WLT · 智慧物流生态
                 </div>
                 
                 <h1 className="flex flex-row items-center gap-6 mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 whitespace-nowrap">

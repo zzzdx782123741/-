@@ -137,7 +137,7 @@ const AfterSales: React.FC = () => {
             <div className="max-w-2xl">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">核心服务价值</h2>
               <div className="w-16 h-1 bg-[#E60012] rounded-full mb-6"></div>
-              <p className="text-gray-500 text-lg">依托万连通强大的运力基石，打造透明、标准、高效的车后综合服务体系</p>
+              <p className="text-gray-500 text-lg">依托WLT强大的运力基石，打造透明、标准、高效的车后综合服务体系</p>
             </div>
             <div className="flex space-x-4">
               <div className="p-4 bg-red-50 text-[#E60012] rounded-2xl">

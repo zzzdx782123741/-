@@ -6,7 +6,7 @@ const LogoIcon = () => (
   <div className="bg-[#E60012] p-1.5 rounded-lg transform scale-125 origin-right mr-2">
     <img 
       src="/logo.png" 
-      alt="万连通 Logo" 
+      alt="WLT Logo" 
       className="w-8 h-8 object-contain"
       onError={(e) => {
         // 如果图片加载失败，回退到 SVG
@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
             <div className="mb-2">
               <img 
                 src="/logo-full.png" 
-                alt="万连通 Logo" 
+                alt="WLT Logo" 
                 className="h-12 w-auto object-contain bg-gray-50 dark:bg-white/5 rounded-lg p-2 transition-colors duration-300" 
               />
             </div>
@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-[#E60012] dark:hover:text-white transition-colors">隐私政策</a>
           </div>
           <div className="flex flex-col items-center space-y-1">
-            <p className="text-[11px] text-gray-500 dark:text-gray-600">Copyright©万连通易达物流科技有限公司All Rights Reserved. 版权所有</p>
+            <p className="text-[11px] text-gray-500 dark:text-gray-600">Copyright©WLT易达物流科技有限公司All Rights Reserved. 版权所有</p>
           </div>
         </div>
       </div>
