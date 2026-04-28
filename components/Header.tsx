@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
             <button 
               className="flex items-center space-x-1.5 py-2 text-[13px] font-bold tracking-wide transition-colors group-hover:text-[#E60012] text-gray-700"
             >
-              <span>物流业务后台入口</span>
+              <span>客户登录入口</span>
               <ChevronDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180" />
             </button>
             
@@ -94,10 +94,18 @@ const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
                     className="block px-5 py-3.5 hover:bg-gray-50 transition-colors group/item"
                   >
                     <div className="flex items-center justify-between text-[13px]">
-                      <span className="text-gray-500">{item.label.split('：')[0]}：</span>
-                      <span className="font-bold text-[#0052D9] group-hover/item:text-[#E60012] transition-colors">
-                        {item.label.split('：')[1]}
-                      </span>
+                      {item.label.includes('：') ? (
+                        <>
+                          <span className="text-gray-500">{item.label.split('：')[0]}：</span>
+                          <span className="font-bold text-[#0052D9] group-hover/item:text-[#E60012] transition-colors">
+                            {item.label.split('：')[1]}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="font-medium text-gray-700 group-hover/item:text-[#E60012] transition-colors w-full text-center">
+                          {item.label}
+                        </span>
+                      )}
                     </div>
                   </a>
                 ))}

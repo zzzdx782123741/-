@@ -89,16 +89,19 @@ const PlatformModules: React.FC = () => {
                 {platform.description}
               </p>
 
-              <button 
-                className="flex items-center space-x-6 text-white font-bold mb-8 lg:mb-20 group/btn hover:text-[#E60012] transition-colors lg:ml-6 lg:ml-10 text-4xl lg:text-5xl"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePlatformClick(platform.id);
-                }}
-              >
-                <span>查看详情</span>
-                <ArrowRight className="w-12 h-12 lg:w-14 lg:h-14 group-hover/btn:translate-x-2 transition-transform" />
-              </button>
+              {/* 查看详情按钮 - 仅多式联运平台显示 */}
+              {platform.id === 'multimodal' && (
+                <button 
+                  className="flex items-center space-x-6 text-white font-bold mb-8 lg:mb-20 group/btn hover:text-[#E60012] transition-colors lg:ml-6 lg:ml-10 text-4xl lg:text-5xl"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePlatformClick(platform.id);
+                  }}
+                >
+                  <span>查看详情</span>
+                  <ArrowRight className="w-12 h-12 lg:w-14 lg:h-14 group-hover/btn:translate-x-2 transition-transform" />
+                </button>
+              )}
 
               {/* 核心能力图标网格 - 调整后：悬停显示长条红框描述，覆盖下方区域 */}
               <div className="flex flex-row justify-between w-full max-w-2xl lg:max-w-none mt-8 relative">
